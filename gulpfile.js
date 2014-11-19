@@ -51,10 +51,6 @@ gulp.task('js', function() {
   .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('browserify', function () {
-
-});
-
 
 gulp.task('css', function() {
   return gulp.src(config.css.src + config.css.glob)
@@ -90,7 +86,7 @@ gulp.task('browser-sync', function() {
 
 
 gulp.task('watch', ['browser-sync'], function() {
-  gulp.watch(config.js.src + config.js.glob, ['js', reload]);
+  gulp.watch(config.js.src + config.js.glob, ['js', 'html', reload]);
   gulp.watch(config.html.src + config.html.glob, ['html', reload]);
 });
 
