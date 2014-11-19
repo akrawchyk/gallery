@@ -14,19 +14,19 @@
     id: 1,
     title: 'Learn Ember.js',
     paragraph: 'Aasdf',
-    image: 'ghost'
+    image: '//www.fillmurray.com/200/300'
   },
   {
     id: 2,
     title: '...',
-      paragraph: 'Qerty',
-      image: 'dinosaur'
+    paragraph: 'Qerty',
+    image: '//www.fillmurray.com/100/400'
   },
   {
     id: 3,
     title: 'Profit!',
     paragraph: 'sdfghh',
-    image: 'bobcat'
+    image: '//www.fillmurray.com/200/400'
   }
   ];
 
