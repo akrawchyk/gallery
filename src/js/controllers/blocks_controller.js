@@ -7,20 +7,21 @@
 
   Gallery.BlocksController = Ember.ArrayController.extend({
     actions: {
-      createPage: function() {
+      createBlock: function() {
         var title = this.get('newTitle').trim();
         if (!title) {
           return false;
         }
 
-        var page = this.store.createRecord('page', {
+        var block = this.store.createRecord('block', {
           title: title,
-          paragraph: 'Time to party',
-          image: '//www.fillmurray.com/300/200'
+          paragraph: '',
+          image: '',
+          page: 1 // TODO find the correct page
         });
 
         this.set('newTitle', '');
-        page.save();
+        block.save();
       }
     }
   });

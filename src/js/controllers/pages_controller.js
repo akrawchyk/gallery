@@ -15,8 +15,9 @@
 
         var page = this.store.createRecord('page', {
           title: title,
-          paragraph: 'Time to party',
-          image: '//www.fillmurray.com/300/200'
+          paragraph: '',
+          image: '',
+          blocks: []
         });
 
         this.set('newTitle', '');

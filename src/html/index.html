@@ -27,19 +27,24 @@
         <![endif]-->
 
         <script type="text/x-handlebars" data-template-name="block">
-            <section id="blockapp">
-                <div style="background-image: url({{unbound image}});">
-                    {{title}}
+            <section class="block" id="blockapp">
+                <div class="block__image" style="background-image: url({{unbound image}});">
+                    <div class="center--xy">
+                        <h2 class="block__title">{{title}}</h2>
+                        <p class="block__paragraph">{{paragraph}}</p>
+                    </div>
                 </div>
             </section>
         </script>
 
 
         <script type="text/x-handlebars" data-template-name="page">
-            <section id="pageapp">
-                {{#each block in model.blocks}}
-                    {{render "block" block}}
-                {{/each}}
+            <section class="page" id="pageapp">
+                <div class="page__blocks">
+                    {{#each block in model.blocks}}
+                        {{render "block" block}}
+                    {{/each}}
+                </div>
                 <div>
                     {{#link-to 'pages'}}back{{/link-to}}
                 </div>
@@ -48,15 +53,15 @@
 
 
         <script type="text/x-handlebars" data-template-name="pages">
-            <section id="hero">
-                <h1>Gallery</h1>
+            <section class="hero" id="hero">
+                <h1 class="hero__title">Gallery</h1>
             </section>
 
-            <section id="pagesapp">
+            <section class="pages" id="pagesapp">
                 <div>
-                    <ul>
+                    <ul class="list list--pages">
                     {{#each page in model}}
-                        <li>
+                        <li class="list__item">
                             {{#link-to 'page' page}}
                             {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}} alt="page image">
                             {{/link-to}}

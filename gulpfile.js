@@ -8,9 +8,7 @@ var reload = browserSync.reload;
 var useref = require('gulp-useref');
 var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer-core');
-var gulpIf = require('gulp-if');
+var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 
 var dist = 'dist/';
@@ -41,10 +39,6 @@ var config = {
     dist: dist + 'img/',
     src: src + 'img/',
     glob: '**/*.{gif,jpg,jpeg,png,svg}'
-  },
-
-  rubySass: {
-    loadPath: src + 'bower_components/foundation/scss/'
   }
 };
 
@@ -62,10 +56,9 @@ gulp.task('js', function() {
 
 
 gulp.task('css', function() {
-  return gulp.src(config.css.src + config.css.glob)
-  .pipe(sass(config.rubySass))
+  return sass(config.css.src)
   .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-  .pipe(gulpIf(config.css.glob, postcss([ autoprefixer() ])))
+  .pipe(autoprefixer())
   .pipe(gulp.dest(config.css.dist))
   .pipe(reload({ stream: true }));
 });

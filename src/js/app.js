@@ -3,8 +3,10 @@
 (function() {
   'use strict';
 
-  window.Gallery = Ember.Application.create();
+  var Gallery = Ember.Application.create();
   Gallery.ApplicationAdapter = DS.FixtureAdapter;
+  window.Gallery = Gallery;
+
 
   jQuery(function() {
     FastClick.attach(document.body);
