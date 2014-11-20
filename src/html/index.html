@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Gallery</title>
+        <title>App</title>
         <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,33 +52,52 @@
         </script>
 
 
-        <script type="text/x-handlebars" data-template-name="pages">
-            <section class="hero" id="hero">
-                <h1 class="hero__title">Gallery</h1>
-            </section>
+        <script type="text/x-handlebars" data-template-name="pages/index">
+            <ul class="list list--pages" id="page-list">
+                {{#each itemController="page"}}
+                    <li class="list__item">
+                        {{#link-to 'page' page}}
+                        {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}} alt="page image">
+                        {{/link-to}}
+                    </li>
+                {{/each}}
+            </ul>
+        </script>
 
-            <section class="pages" id="pagesapp">
-                <div>
-                    <ul class="list list--pages">
-                    {{#each page in model}}
-                        <li class="list__item">
-                            {{#link-to 'page' page}}
-                            {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}} alt="page image">
-                            {{/link-to}}
-                        </li>
-                    {{/each}}
-                    </ul>
-                </div>
-                <div>
-                    <h2>Edit</h2>
+
+        <script type="text/x-handlebars" data-template-name="pages">
+            <section id="pageapp">
+                <header class="hero" id="hero">
+                    <h1 class="hero__title">App</h1>
                     {{input
                     type="text"
                     id="new-page"
                     placeholder="Title your page"
                     value=newTitle
                     action="createPage"}}
-                </div>
+                </header>
+
+                <section id="main">
+                    {{outlet}}
+                </section>
+
+                <footer>
+                    <p>app footer</p>
+                </footer>
             </section>
+        </script>
+
+
+        <script type="text/x-handlebars" data-template-name="application">
+            <header>
+                site header
+            </header>
+
+            {{outlet}}
+
+            <footer>
+                site footer
+            </footer>
         </script>
 
 
@@ -96,7 +115,8 @@
         <script src="js/models/page.js"></script>
         <script src="js/models/block.js"></script>
         <script src="js/controllers/pages_controller.js"></script>
-        <script src="js/controllers/blocks_controller.js"></script>
+        <script src="js/controllers/page_controller.js"></script>
+        <!-- <script src="js/controllers/blocks_controller.js"></script> -->
         <!-- endbuild -->
     </body>
 </html>

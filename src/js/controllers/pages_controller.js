@@ -1,11 +1,11 @@
-/* globals Ember, Gallery */
+/* globals Ember, App */
 
 
 (function() {
   'use strict';
 
 
-  Gallery.PagesController = Ember.ArrayController.extend({
+  App.PagesController = Ember.ArrayController.extend({
     actions: {
       createPage: function() {
         var title = this.get('newTitle').trim();

@@ -1,11 +1,11 @@
-/* globals Ember, Gallery */
+/* globals Ember, App */
 
 
 (function() {
   'use strict';
 
 
-  Gallery.BlocksController = Ember.ArrayController.extend({
+  App.BlocksController = Ember.ArrayController.extend({
     actions: {
       createBlock: function() {
         var title = this.get('newTitle').trim();

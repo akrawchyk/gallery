@@ -1,4 +1,4 @@
-/* global Gallery, DS */
+/* global App, DS */
 
 (function() {
   'use strict';
@@ -6,7 +6,7 @@
   var attr = DS.attr,
   belongsTo = DS.belongsTo;
 
-  Gallery.Block = DS.Model.extend({
+  App.Block = DS.Model.extend({
     createdAt: attr('date', {
       defaultValue: function() { return new Date().toISOString(); }
     }),
@@ -18,7 +18,7 @@
   });
 
 
-  Gallery.Block.reopenClass({
+  App.Block.reopenClass({
     FIXTURES: [
       {
         id: 1,

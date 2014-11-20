@@ -1,26 +1,26 @@
-/* global Gallery, DS */
+/* global App, DS */
 
 (function() {
   'use strict';
 
-  var attr = DS.attr,
-  hasMany = DS.hasMany;
+  var attr = DS.attr;
+  // hasMany = DS.hasMany;
 
 
-  Gallery.Page = DS.Model.extend({
+  App.Page = DS.Model.extend({
     createdAt: attr('date', {
       defaultValue: function() { return new Date().toISOString(); }
     }),
     title: attr('string'),
     slug: attr('string'),
     paragraph: attr('string'),
-    image: attr('string'),
+    image: attr('string')
 
-    blocks: hasMany('block', { async: true })
+    // blocks: hasMany('block', { async: true })
   });
 
 
-  Gallery.Page.reopenClass({
+  App.Page.reopenClass({
     FIXTURES:[
       {
         id: 1,

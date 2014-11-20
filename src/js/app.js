@@ -3,9 +3,11 @@
 (function() {
   'use strict';
 
-  var Gallery = Ember.Application.create();
-  Gallery.ApplicationAdapter = DS.FixtureAdapter;
-  window.Gallery = Gallery;
+  var App = Ember.Application.create({
+    LOG_TRANSITIONS: true
+  });
+  App.ApplicationAdapter = DS.FixtureAdapter;
+  window.App = App;
 
 
   jQuery(function() {
