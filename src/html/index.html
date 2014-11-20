@@ -27,21 +27,32 @@
         <![endif]-->
 
         <script type="text/x-handlebars" data-template-name="page">
+            <section class="row" id="pageapp">
+                <div class="small-12 columns">
+                    <h1>{{title}}</h1>
+                    <p>{{paragraph}}<p>
+                    <img {{bind-attr src=image}}>
+                </div>
+                <div class="small-12 columns">
+                    {{#link-to 'pages'}}back{{/link-to}}
+                </div>
+            <section>
         </script>
 
         <script type="text/x-handlebars" data-template-name="pages">
-            <section class="row" id="galleryapp">
+            <section class="row" id="pagesapp">
                 <div class="small-12 columns">
                     <h1>Gallery</h1>
                     <ul class="row">
                     {{#each page in model}}
-                        <li class="small-3 columns">
-                            {{page.title}} - {{page.paragraph}} - <img {{bind-attr src=page.image}}>
-                        </li>
+                    <li class="small-3 columns">
+                    {{#link-to 'page' page}} {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}}> {{/link-to}}
+                    </li>
                     {{/each}}
                     </ul>
                 </div>
                 <div class="small-12 columns">
+                    <h2>Edit</h2>
                     {{input
                     type="text"
                     id="new-page"

@@ -8,6 +8,9 @@ var reload = browserSync.reload;
 var useref = require('gulp-useref');
 var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer-core');
+var gulpIf = require('gulp-if');
 
 var dist = 'dist/';
 var src = 'src/';
@@ -56,6 +59,7 @@ gulp.task('css', function() {
   return gulp.src(config.css.src + config.css.glob)
   .pipe(sass(config.rubySass))
   .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+  .pipe(gulpIf(config.css.glob, postcss([ autoprefixer() ])))
   .pipe(gulp.dest(config.css.dist))
   .pipe(reload({ stream: true }));
 });
@@ -87,6 +91,7 @@ gulp.task('browser-sync', function() {
 
 gulp.task('watch', ['browser-sync'], function() {
   gulp.watch(config.js.src + config.js.glob, ['js', 'html', reload]);
+  gulp.watch(config.css.src + config.css.glob, ['css']);
   gulp.watch(config.html.src + config.html.glob, ['html', reload]);
 });
 
