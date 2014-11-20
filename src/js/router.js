@@ -5,12 +5,9 @@
 
 
   App.Router.map(function() {
-    this.resource('pages', { path: '/' });
-    // this.resource('page', { path: '/page/:page_slug' }, function() {
-    //   this.resource('blocks', function() {
-    //     this.route('new');
-    //   });
-    // });
+    this.resource('pages', { path: '/pages' }, function() {
+      this.route('new');
+    });
   });
 
 
@@ -27,7 +24,7 @@
     }
   });
 
-
+  //
   // App.PageRoute = Ember.Route.extend({
   //   model: function(params) {
   //     return jQuery.getJSON('/page/' + params.page_slug);

@@ -26,39 +26,45 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <script type="text/x-handlebars" data-template-name="block">
-            <section class="block" id="blockapp">
-                <div class="block__image" style="background-image: url({{unbound image}});">
-                    <div class="center--xy">
-                        <h2 class="block__title">{{title}}</h2>
-                        <p class="block__paragraph">{{paragraph}}</p>
-                    </div>
-                </div>
-            </section>
+        <!-- <script type="text/x&#45;handlebars" data&#45;template&#45;name="block"> -->
+        <!--     <section class="block" id="blockapp"> -->
+        <!--         <div class="block__image" style="background&#45;image: url({{unbound image}});"> -->
+        <!--             <div class="center&#45;&#45;xy"> -->
+        <!--                 <h2 class="block__title">{{title}}</h2> -->
+        <!--                 <p class="block__paragraph">{{paragraph}}</p> -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--     </section> -->
+        <!-- </script> -->
+
+
+        <!-- <script type="text/x&#45;handlebars" data&#45;template&#45;name="page/index"> -->
+        <!--     <div class="page"> -->
+        <!--         <h2>{{title}}</h2> -->
+        <!--         <div> -->
+        <!--             {{#link&#45;to 'pages'}}back{{/link&#45;to}} -->
+        <!--         </div> -->
+        <!--     </div> -->
+        <!-- </script> -->
+        <!--  -->
+        <!-- <script type="text/x&#45;handlebars" data&#45;template&#45;name="page"> -->
+        <!--     <section id="pageapp"> -->
+        <!--         <h2>{{title}}</h2> -->
+        <!--         <div> -->
+        <!--             {{#link&#45;to 'pages'}}back{{/link&#45;to}} -->
+        <!--         </div> -->
+        <!--     <section> -->
+        <!-- </script> -->
+
+
+        <script type="text/x-handlebars" data-template-name="pages/new">
         </script>
-
-
-        <script type="text/x-handlebars" data-template-name="page">
-            <section class="page" id="pageapp">
-                <div class="page__blocks">
-                    {{#each block in model.blocks}}
-                        {{render "block" block}}
-                    {{/each}}
-                </div>
-                <div>
-                    {{#link-to 'pages'}}back{{/link-to}}
-                </div>
-            <section>
-        </script>
-
 
         <script type="text/x-handlebars" data-template-name="pages/index">
-            <ul class="list list--pages" id="page-list">
+            <ul class="list list--pages" id="pages">
                 {{#each itemController="page"}}
                     <li class="list__item">
-                        {{#link-to 'page' page}}
-                        {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}} alt="page image">
-                        {{/link-to}}
+                        {{title}} - {{slug}} - {{paragraph}} - <img {{bind-attr src=image}} alt="page image">
                     </li>
                 {{/each}}
             </ul>
@@ -66,9 +72,9 @@
 
 
         <script type="text/x-handlebars" data-template-name="pages">
-            <section id="pageapp">
+            <section id="pagesapp">
                 <header class="hero" id="hero">
-                    <h1 class="hero__title">App</h1>
+                    <h1 class="hero__title">Pages</h1>
                     {{input
                     type="text"
                     id="new-page"
@@ -82,21 +88,29 @@
                 </section>
 
                 <footer>
-                    <p>app footer</p>
+                    <p>pages footer</p>
                 </footer>
+            </section>
+        </script>
+
+
+        <script type="text/x-handlebars" data-template-name="index">
+            <section id="index">
+                <h1>Welcome to Gallery</h1>
+                {{#link-to 'pages'}}go to pages{{/link-to}}
             </section>
         </script>
 
 
         <script type="text/x-handlebars" data-template-name="application">
             <header>
-                site header
+                app header
             </header>
 
             {{outlet}}
 
             <footer>
-                site footer
+                app footer
             </footer>
         </script>
 
