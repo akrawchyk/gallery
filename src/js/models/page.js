@@ -4,8 +4,7 @@
   'use strict';
 
   var attr = DS.attr,
-  hasMany = DS.hasMany,
-  belongsTo = DS.belongsTo;
+  hasMany = DS.hasMany;
 
 
   Gallery.Page = DS.Model.extend({
@@ -21,18 +20,6 @@
   });
 
 
-  Gallery.Block = DS.Model.extend({
-    createdAt: attr('date', {
-      defaultValue: function() { return new Date().toISOString(); }
-    }),
-    title: attr('string'),
-    paragraph: attr('string'),
-    image: attr('string'),
-
-    page: belongsTo('page')
-  });
-
-
   Gallery.Page.reopenClass({
     FIXTURES:[
       {
@@ -41,7 +28,7 @@
         slug: 'learn-emberjs',
         paragraph: 'Aasdf',
         image: '//www.fillmurray.com/300/300',
-        blocks: [1]
+        blocks: [1, 2]
       },
       {
         id: 2,
@@ -60,17 +47,5 @@
     ]
   });
 
-
-  Gallery.Block.reopenClass({
-    FIXTURES: [
-      {
-        id: 1,
-        title: 'Top Block',
-        paragraph: 'Top block paragraph',
-        image: '//www.fillmurray.com/1000/1000',
-        page: 1
-      }
-    ]
-  });
 
 })();
