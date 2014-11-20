@@ -6,7 +6,11 @@
 
   Gallery.Router.map(function() {
     this.resource('pages', { path: '/' });
-    this.resource('page', { path: '/page/:page_slug' });
+    this.resource('page', { path: '/page/:page_slug' }, function() {
+      this.resource('blocks', function() {
+        this.route('new');
+      });
+    });
   });
 
 

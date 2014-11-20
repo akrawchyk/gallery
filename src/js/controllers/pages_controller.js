@@ -4,6 +4,7 @@
 (function() {
   'use strict';
 
+
   Gallery.PagesController = Ember.ArrayController.extend({
     actions: {
       createPage: function() {

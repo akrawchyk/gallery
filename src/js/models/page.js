@@ -9,8 +9,8 @@
 
 
   Gallery.Page = DS.Model.extend({
-    createdAt: DS.attr('string', {
-      defaultValue: function() { return new Date(); }
+    createdAt: attr('date', {
+      defaultValue: function() { return new Date().toISOString(); }
     }),
     title: attr('string'),
     slug: attr('string'),
@@ -22,8 +22,8 @@
 
 
   Gallery.Block = DS.Model.extend({
-    createdAt: DS.attr('string', {
-      defaultValue: function() { return new Date(); }
+    createdAt: attr('date', {
+      defaultValue: function() { return new Date().toISOString(); }
     }),
     title: attr('string'),
     paragraph: attr('string'),

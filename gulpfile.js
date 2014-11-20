@@ -11,6 +11,7 @@ var plumber = require('gulp-plumber');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
 var gulpIf = require('gulp-if');
+var imagemin = require('gulp-imagemin');
 
 var dist = 'dist/';
 var src = 'src/';
@@ -35,6 +36,11 @@ var config = {
   },
   extras: {
     glob: [src + '*', '!*/bower_components', '!*/js', '!*/scss', '!*/html']
+  },
+  img: {
+    dist: dist + 'img/',
+    src: src + 'img/',
+    glob: '**/*.{gif,jpg,jpeg,png,svg}'
   },
 
   rubySass: {
@@ -82,6 +88,13 @@ gulp.task('extras', function() {
 });
 
 
+gulp.task('images', function() {
+  return gulp.src(config.img.src + config.img.blob)
+  .pipe(imagemin())
+  .pipe(gulp.dest(config.img.dist));
+});
+
+
 gulp.task('browser-sync', function() {
   browserSync({
     server: { baseDir: config.dist }
@@ -98,7 +111,7 @@ gulp.task('watch', ['browser-sync'], function() {
 
 gulp.task('dist', function(cb) {
   require('run-sequence')('clean',
-                         ['js', 'css', 'extras'],
+                         ['js', 'css', 'extras', 'images'],
                          'html',
                          cb);
 });

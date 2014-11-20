@@ -26,24 +26,18 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+
         <script type="text/x-handlebars" data-template-name="page">
             <section id="pageapp">
-                {{#each block in model.blocks}}
-                    <div> {{title}} </div>
-                {{/each}}
-                <div>
-                    {{input
-                    type="text"
-                    id="new-block"
-                    placeholder="Title your block"
-                    value=newTitle
-                    action="createBlock"}}
+                <div style="background-image: url({{unbound image}});">
+                    {{title}}
                 </div>
                 <div>
                     {{#link-to 'pages'}}back{{/link-to}}
                 </div>
             <section>
         </script>
+
 
         <script type="text/x-handlebars" data-template-name="pages">
             <section id="hero">
@@ -88,7 +82,6 @@
         <script src="js/router.js"></script>
         <script src="js/models/page.js"></script>
         <script src="js/controllers/pages_controller.js"></script>
-        <script src="js/controllers/page_controller.js"></script>
         <!-- endbuild -->
     </body>
 </html>
