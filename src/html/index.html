@@ -58,6 +58,8 @@
 
 
         <script type="text/x-handlebars" data-template-name="pages/new">
+            {{! TODO not sure if i'll need to use this !}}
+            new page
         </script>
 
         <script type="text/x-handlebars" data-template-name="pages/index">
@@ -81,6 +83,8 @@
                     placeholder="Title your page"
                     value=newTitle
                     action="createPage"}}
+
+                    {{#link-to 'pages.new'}}new page{{/link-to}}
                 </header>
 
                 <section id="main">
