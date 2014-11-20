@@ -3,6 +3,7 @@
 (function() {
   'use strict';
 
+
   Gallery.Router.map(function() {
     this.resource('pages', { path: '/' });
     this.resource('page', { path: '/page/:page_slug' });
@@ -21,9 +22,8 @@
       return jQuery.getJSON('/page/' + params.page_slug);
     },
     serialize: function(model) {
-      return { post_slug: model.get('slug') };
+      return { page_slug: model.get('slug') };
     }
   });
 
 })();
-
