@@ -26,17 +26,18 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <section id="hero">
-            <h1>Gallery</h1>
-        </section>
-
-
         <script type="text/x-handlebars" data-template-name="page">
             <section id="pageapp">
+                {{#each block in model.blocks}}
+                    <div> {{title}} </div>
+                {{/each}}
                 <div>
-                    <h1>{{title}}</h1>
-                    <p>{{paragraph}}<p>
-                    <img {{bind-attr src=image}}>
+                    {{input
+                    type="text"
+                    id="new-block"
+                    placeholder="Title your block"
+                    value=newTitle
+                    action="createBlock"}}
                 </div>
                 <div>
                     {{#link-to 'pages'}}back{{/link-to}}
@@ -45,13 +46,17 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="pages">
+            <section id="hero">
+                <h1>Gallery</h1>
+            </section>
+
             <section id="pagesapp">
                 <div>
                     <ul>
                     {{#each page in model}}
                         <li>
                             {{#link-to 'page' page}}
-                            {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}}>
+                            {{page.title}} - {{page.slug}} - {{page.paragraph}} - <img {{bind-attr src=page.image}} alt="page image">
                             {{/link-to}}
                         </li>
                     {{/each}}
@@ -83,6 +88,7 @@
         <script src="js/router.js"></script>
         <script src="js/models/page.js"></script>
         <script src="js/controllers/pages_controller.js"></script>
+        <script src="js/controllers/page_controller.js"></script>
         <!-- endbuild -->
     </body>
 </html>
