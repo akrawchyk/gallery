@@ -8,7 +8,9 @@
     this.resource('pages', { path: '/pages' }, function() {
       this.route('new');
     });
-    this.resource('page', { path: '/page/:page_slug' });
+    this.resource('page', { path: '/page/:page_slug' }, function() {
+      this.resource('blocks');
+    });
   });
 
 
@@ -19,19 +21,19 @@
   });
 
 
-  App.PagesIndexRoute = Ember.Route.extend({
-    model: function () {
-      return this.modelFor('pages');
-    }
-  });
-
-
   App.PageRoute = Ember.Route.extend({
     model: function(params) {
       return jQuery.getJSON('/page/' + params.page_slug);
     },
     serialize: function(model) {
       return { page_slug: model.get('slug') };
+    }
+  });
+
+
+  App.BlocksRoute = Ember.Route.extend({
+    model: function () {
+      return this.modelFor('page').get('blocks');
     }
   });
 

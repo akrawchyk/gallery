@@ -5,49 +5,45 @@
 
 
   var attr = DS.attr,
-  hasMany = DS.hasMany;
+  belongsTo = DS.belongsTo;
 
 
-  App.Page = DS.Model.extend({
+  App.Block = DS.Model.extend({
     createdAt: attr('date', {
       defaultValue: function() { return new Date().toISOString(); }
     }),
     title: attr('string'),
-    slug: attr('string'),
     paragraph: attr('string'),
     image: attr('string'),
 
-    blocks: hasMany('block', { async: true })
+    page: belongsTo('page')
   });
 
 
-  App.Page.reopenClass({
+  App.Block.reopenClass({
     FIXTURES:[
       {
         id: 1,
-        title: 'Learn Ember.js',
-        slug: 'learn-emberjs',
-        paragraph: 'Aasdf',
+        title: 'block Learn Ember.js',
+        paragraph: 'block Aasdf',
         image: '//www.fillmurray.com/300/300',
-        blocks: [1, 2]
+        page: 1
       },
       {
         id: 2,
         title: '...',
-        slug: 'elipses',
         paragraph: 'Qerty',
         image: '//www.fillmurray.com/600/400',
-        blocks: [3]
+        page: 1
       },
       {
         id: 3,
         title: 'Profit!',
-        slug: 'profit',
         paragraph: 'sdfghh',
-        image: '//www.fillmurray.com/400/400'
+        image: '//www.fillmurray.com/400/400',
+        page: 2
       }
     ]
   });
-
 
 })();

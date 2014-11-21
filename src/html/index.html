@@ -27,11 +27,21 @@
         <![endif]-->
 
 
+        <script type="text/x-handlebars" data-template-name="blocks">
+            <section id="block">
+                {{#each itemController="block"}}
+                    {{title}} - {{paragraph}} - {{image}}
+                {{/each}}
+            </section>
+        </script>
+
+
         <script type="text/x-handlebars" data-template-name="page">
             <div class="page">
                 <div class="page__image" {{bind-attr style=imageStyle}}></div>
                     <h2>{{title}}</h2>
                 </div>
+                {{outlet}}
                 <div class="page__back">
                     {{#link-to 'pages'}}back to pages{{/link-to}}
                 </div>
@@ -43,7 +53,7 @@
             <ul class="list list--pages" id="pages">
                 {{#each itemController="page"}}
                     <li class="list__item">
-                        {{#link-to 'page' this}}
+                        {{#link-to 'blocks' this}}
                             {{title}} - {{slug}} - {{paragraph}} - <img {{bind-attr src=image}} alt="page image">
                         {{/link-to}}
                     </li>
@@ -118,6 +128,7 @@
                 </section>
 
                 <footer>
+                    <p>{{#link-to 'index'}}back to index{{/link-to}}</p>
                     <p>pages footer</p>
                 </footer>
             </section>
@@ -158,8 +169,10 @@
         <script src="js/app.js"></script>
         <script src="js/router.js"></script>
         <script src="js/models/page.js"></script>
+        <script src="js/models/block.js"></script>
         <script src="js/controllers/pages_controller.js"></script>
         <script src="js/controllers/page_controller.js"></script>
+        <script src="js/controllers/block_controller.js"></script>
         <!-- endbuild -->
     </body>
 </html>
