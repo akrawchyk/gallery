@@ -59,6 +59,10 @@ var config = {
     dist: dist + 'img/',
     src: src + 'img/',
     glob: '**/*.{gif,jpg,jpeg,png,svg}'
+  },
+
+  rubySass: {
+    loadPath: ['src/bower_components/']
   }
 };
 
@@ -76,7 +80,7 @@ gulp.task('js', function() {
 
 
 gulp.task('css', function() {
-  return sass(config.css.src)
+  return sass(config.css.src, config.rubySass)
   .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
   .pipe(autoprefixer())
   .pipe(gulp.dest(config.tmp.css))

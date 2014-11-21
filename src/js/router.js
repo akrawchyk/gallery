@@ -9,7 +9,9 @@
       this.route('new');
     });
     this.resource('page', { path: '/page/:page_slug' }, function() {
-      this.resource('blocks');
+      this.resource('blocks', function() {
+        this.route('new');
+      });
     });
   });
 

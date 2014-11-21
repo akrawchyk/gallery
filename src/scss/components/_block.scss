@@ -1,14 +1,20 @@
 .block {
-    border-bottom: 2px solid $border-color-white;
-    color: $text-color-white;
+    border-bottom: 2px solid $white;
+    color: $white;
     height: 450px;
     position: relative;
+}
+
+
+.block__content {
+    max-width: 75%;
 }
 
 
 .block__image {
     background: {
         size: cover;
+        position: 50% 50%;
     }
     position: absolute;
     top: 0;
@@ -20,5 +26,12 @@
 
 
 .block__title {
-    font-family: $font-family-title;
+    @include inuit-font-size(32px);
+    font-family: $title-font-family;
+}
+
+
+.block__paragraph {
+    @include inuit-font-size(20px);
+    font-family: $base-font-family;
 }

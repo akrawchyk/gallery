@@ -25,17 +25,17 @@
     FIXTURES:[
       {
         id: 1,
-        title: 'Learn Ember.js',
-        slug: 'learn-emberjs',
-        paragraph: 'Aasdf',
+        title: 'Ferrari',
+        slug: 'ferrari',
+        paragraph: 'An expose of Ferrari\'s',
         image: '',
         blocks: [1, 2]
       },
       {
         id: 2,
-        title: '...',
-        slug: 'elipses',
-        paragraph: 'Qerty',
+        title: 'Lambos',
+        slug: 'lambos',
+        paragraph: 'An expose of Lambo\'s',
         image: '',
         blocks: [3]
       },

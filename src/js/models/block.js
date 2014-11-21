@@ -38,9 +38,9 @@
       },
       {
         id: 3,
-        title: 'Profit!',
-        paragraph: 'sdfghh',
-        image: '//www.fillmurray.com/400/400',
+        title: 'Spot The Odd One Out',
+        paragraph: 'Roadtrip car feat some Lambos!',
+        image: '//farm3.staticflickr.com/2898/14449510770_2f18830e87_k_d.jpg',
         page: 2
       }
     ]

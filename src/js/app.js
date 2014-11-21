@@ -6,9 +6,7 @@
   var App = Ember.Application.create({
     LOG_TRANSITIONS: true
   });
-  App.ApplicationAdapter = DS.FixtureAdapter.extend({
-    simulateRemoteResponse: true
-  });
+  App.ApplicationAdapter = DS.FixtureAdapter;
   window.App = App;
 
 
@@ -19,7 +17,7 @@
 
   WebFont.load({
     google: {
-      families: ['Lato']
+      families: ['Lato', 'Overclock']
     }
   });
 
