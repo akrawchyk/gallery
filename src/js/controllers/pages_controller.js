@@ -1,27 +1,49 @@
-/* globals Ember, App */
+/* globals Ember, App, S */
 
 
 (function() {
   'use strict';
 
 
-  App.PagesController = Ember.ArrayController.extend({
+  App.PagesNewController = Ember.ArrayController.extend({
     actions: {
       createPage: function() {
-        var title = this.get('newTitle').trim();
+        var title = this.get('newTitle');
+        var slug = 'asdf';
+        // var slug = this.get('newSlug');
+        // var paragraph = this.get('newParagraph');
+        // var image = this.get('newImage');
+
         if (!title) {
           return false;
         }
 
+        if (title && !slug) {
+          slug = S(slug).dasherize().s;
+        }
+
         var page = this.store.createRecord('page', {
           title: title,
-          paragraph: '',
-          image: '',
-          blocks: []
+          slug: slug
+          // paragraph: paragraph,
+          // image: image
         });
 
-        this.set('newTitle', '');
-        page.save();
+        var self = this;
+
+        function onSuccess(page) {
+          self.set('newTitle', '');
+          self.set('newSlug', '');
+          self.set('newParagraph', '');
+          self.set('newImage', '');
+          self.transitionToRoute('page', page.slug);
+        }
+
+        function onFail(reason) {
+          console.log(reason);
+        }
+
+        page.save(onSuccess, onFail);
       }
     }
   });

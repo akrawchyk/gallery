@@ -26,50 +26,82 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- <script type="text/x&#45;handlebars" data&#45;template&#45;name="block"> -->
-        <!--     <section class="block" id="blockapp"> -->
-        <!--         <div class="block__image" style="background&#45;image: url({{unbound image}});"> -->
-        <!--             <div class="center&#45;&#45;xy"> -->
-        <!--                 <h2 class="block__title">{{title}}</h2> -->
-        <!--                 <p class="block__paragraph">{{paragraph}}</p> -->
-        <!--             </div> -->
-        <!--         </div> -->
-        <!--     </section> -->
-        <!-- </script> -->
 
-
-        <!-- <script type="text/x&#45;handlebars" data&#45;template&#45;name="page/index"> -->
-        <!--     <div class="page"> -->
-        <!--         <h2>{{title}}</h2> -->
-        <!--         <div> -->
-        <!--             {{#link&#45;to 'pages'}}back{{/link&#45;to}} -->
-        <!--         </div> -->
-        <!--     </div> -->
-        <!-- </script> -->
-        <!--  -->
-        <!-- <script type="text/x&#45;handlebars" data&#45;template&#45;name="page"> -->
-        <!--     <section id="pageapp"> -->
-        <!--         <h2>{{title}}</h2> -->
-        <!--         <div> -->
-        <!--             {{#link&#45;to 'pages'}}back{{/link&#45;to}} -->
-        <!--         </div> -->
-        <!--     <section> -->
-        <!-- </script> -->
-
-
-        <script type="text/x-handlebars" data-template-name="pages/new">
-            {{! TODO not sure if i'll need to use this !}}
-            new page
+        <script type="text/x-handlebars" data-template-name="page">
+            <div class="page">
+                <div class="page__image" {{bind-attr style=imageStyle}}></div>
+                    <h2>{{title}}</h2>
+                </div>
+                <div class="page__back">
+                    {{#link-to 'pages'}}back to pages{{/link-to}}
+                </div>
+            </div>
         </script>
+
 
         <script type="text/x-handlebars" data-template-name="pages/index">
             <ul class="list list--pages" id="pages">
                 {{#each itemController="page"}}
                     <li class="list__item">
-                        {{title}} - {{slug}} - {{paragraph}} - <img {{bind-attr src=image}} alt="page image">
+                        {{#link-to 'page' this}}
+                            {{title}} - {{slug}} - {{paragraph}} - <img {{bind-attr src=image}} alt="page image">
+                        {{/link-to}}
                     </li>
                 {{/each}}
             </ul>
+        </script>
+
+
+        <script type="text/x-handlebars" data-template-name="pages/new">
+            Create a new page
+
+            <div>
+                <label>
+                    <span>Title</span>
+                    {{input
+                    type="text"
+                    placeholder="Title your page"
+                    value=newTitle}}
+                <label>
+            </div>
+
+            <div>
+                <label>
+                    <span>Slug</span>
+                    {{input
+                    type="text"
+                    placeholder="Give your page a slug"
+                    value=newSlug}}
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <span>Paragraph</span>
+                    {{input
+                    type="text"
+                    placeholder="Give your page a paragraph"
+                    value=newParagraph}}
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <span>Image</span>
+                    {{input
+                    type="text"
+                    placeholder="Give your page an image"
+                    value=newImage}}
+                </label>
+            </div>
+
+            <div>
+                <button {{action "createPage"}}>Create</button>
+            </div>
+
+            <div>
+                {{#link-to 'pages'}}back to pages{{/link-to}}
+            </div>
         </script>
 
 
@@ -77,12 +109,6 @@
             <section id="pagesapp">
                 <header class="hero" id="hero">
                     <h1 class="hero__title">Pages</h1>
-                    {{input
-                    type="text"
-                    id="new-page"
-                    placeholder="Title your page"
-                    value=newTitle
-                    action="createPage"}}
 
                     {{#link-to 'pages.new'}}new page{{/link-to}}
                 </header>
@@ -125,16 +151,15 @@
         <script src="bower_components/handlebars/handlebars.js"></script>
         <script src="bower_components/ember/ember.js"></script>
         <script src="bower_components/ember-data/ember-data.js"></script>
+        <script src="bower_components/stringjs/lib/string.js"></script>
         <!-- endbuild -->
 
         <!-- build:js js/app.js -->
         <script src="js/app.js"></script>
         <script src="js/router.js"></script>
         <script src="js/models/page.js"></script>
-        <script src="js/models/block.js"></script>
         <script src="js/controllers/pages_controller.js"></script>
         <script src="js/controllers/page_controller.js"></script>
-        <!-- <script src="js/controllers/blocks_controller.js"></script> -->
         <!-- endbuild -->
     </body>
 </html>

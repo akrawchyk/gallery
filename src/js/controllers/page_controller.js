@@ -12,7 +12,11 @@
       }
     },
 
-    isEditing: false
+    isEditing: false,
+
+    imageStyle: function() {
+      return 'background-image: url(' + this.get('image') + ')';
+    }.property('imageStyle')
   });
 
 })();
