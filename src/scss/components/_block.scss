@@ -1,6 +1,8 @@
 .block {
-    display: flex;
+    border-bottom: 2px solid $border-color-white;
+    color: $text-color-white;
     height: 450px;
+    position: relative;
 }
 
 
@@ -8,4 +10,15 @@
     background: {
         size: cover;
     }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+.block__title {
+    font-family: $font-family-title;
 }

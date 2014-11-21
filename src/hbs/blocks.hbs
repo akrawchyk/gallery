@@ -1,5 +1,11 @@
-<section id="block">
+<section class="blocks">
     {{#each itemController="block"}}
-    {{title}} - {{paragraph}} - <img {{bind-attr src=image}}>
+        <div class="block flex">
+            <div class="block__image" {{bind-attr style="imageStyle"}}></div>
+            <div class="center--xy text--center">
+                <h2 class="block__title text--uppercase">{{title}}</h2>
+                <p class="block__paragraph">{{paragraph}}</p>
+            </div>
+        </div>
     {{/each}}
 </section>

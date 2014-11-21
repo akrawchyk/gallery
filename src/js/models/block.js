@@ -24,16 +24,16 @@
     FIXTURES:[
       {
         id: 1,
-        title: 'block Learn Ember.js',
-        paragraph: 'block Aasdf',
-        image: '//www.fillmurray.com/300/300',
+        title: 'Ferrari Panorama',
+        paragraph: 'Ferrari (and a Lambo) Panorama taken at Cars and Coffee in Irvine.',
+        image: '//farm8.staticflickr.com/7307/8732672635_ff80790616_k_d.jpg',
         page: 1
       },
       {
         id: 2,
-        title: '...',
-        paragraph: 'Qerty',
-        image: '//www.fillmurray.com/600/400',
+        title: 'Axion23',
+        paragraph: 'Ferrari Supercars - F40, F50, and Enzo.',
+        image: '//farm6.staticflickr.com/5332/9376918883_ef2844c3c0_k_d.jpg',
         page: 1
       },
       {

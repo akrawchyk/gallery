@@ -15,7 +15,7 @@
     isEditing: false,
 
     imageStyle: function() {
-      return 'background-image: url(' + this.get('image') + ')';
+      return 'background-image: url(' + this.get('image') + ');';
     }.property('imageStyle')
   });
 

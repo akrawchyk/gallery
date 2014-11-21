@@ -28,7 +28,7 @@
         title: 'Learn Ember.js',
         slug: 'learn-emberjs',
         paragraph: 'Aasdf',
-        image: '//www.fillmurray.com/300/300',
+        image: '',
         blocks: [1, 2]
       },
       {
@@ -36,15 +36,15 @@
         title: '...',
         slug: 'elipses',
         paragraph: 'Qerty',
-        image: '//www.fillmurray.com/600/400',
-        blocks: 3
+        image: '',
+        blocks: [3]
       },
       {
         id: 3,
         title: 'Profit!',
         slug: 'profit',
         paragraph: 'sdfghh',
-        image: '//www.fillmurray.com/400/400'
+        image: ''
       }
     ]
   });

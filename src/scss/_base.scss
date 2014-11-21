@@ -7,6 +7,37 @@
 }
 
 
-.center--xy {
-
+html {
+    font-size: ($font-size-base / 16px) * 1em;
+    line-height: $line-height-base / $font-size-base;
+    background: $background-color-base;
+    color: $text-color-base;
+    overflow-y: scroll;
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
+
+
+.flex {
+    display: flex;
+}
+
+
+.center--xy {
+    margin: auto;
+}
+
+
+.text--center {
+    text-align: center;
+}
+
+
+.text--uppercase {
+    text-transform: uppercase;
+}
+
+
