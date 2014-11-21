@@ -1,0 +1,9 @@
+<div class="page">
+    <div class="page__image" {{bind-attr style=imageStyle}}></div>
+        <h2>{{title}}</h2>
+    </div>
+    {{outlet}}
+    <div class="page__back">
+        {{#link-to 'pages'}}back to pages{{/link-to}}
+    </div>
+</div>

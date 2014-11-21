@@ -37,7 +37,7 @@
         slug: 'elipses',
         paragraph: 'Qerty',
         image: '//www.fillmurray.com/600/400',
-        blocks: [3]
+        blocks: 3
       },
       {
         id: 3,

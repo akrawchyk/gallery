@@ -1,0 +1,49 @@
+Create a new page
+
+<div>
+    <label>
+        <span>Title</span>
+        {{input
+        type="text"
+        placeholder="Title your page"
+        value=newTitle}}
+    <label>
+</div>
+
+<div>
+    <label>
+        <span>Slug</span>
+        {{input
+        type="text"
+        placeholder="Give your page a slug"
+        value=newSlug}}
+    </label>
+</div>
+
+<div>
+    <label>
+        <span>Paragraph</span>
+        {{input
+        type="text"
+        placeholder="Give your page a paragraph"
+        value=newParagraph}}
+    </label>
+</div>
+
+<div>
+    <label>
+        <span>Image</span>
+        {{input
+        type="text"
+        placeholder="Give your page an image"
+        value=newImage}}
+    </label>
+</div>
+
+<div>
+    <button {{action "createPage"}}>Create</button>
+</div>
+
+<div>
+    {{#link-to 'pages'}}back to pages{{/link-to}}
+</div>

@@ -1,0 +1,9 @@
+<ul class="list list--pages" id="pages">
+    {{#each itemController="page"}}
+        <li class="list__item">
+            {{#link-to 'blocks' this}}
+                {{title}} - {{slug}} - {{paragraph}} - <img {{bind-attr src=image}} alt="page image">
+            {{/link-to}}
+        </li>
+    {{/each}}
+</ul>

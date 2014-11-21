@@ -10,14 +10,25 @@ var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
+var wrap = require('gulp-wrap');
+var concat = require('gulp-concat');
+var declare = require('gulp-declare');
+var handlebars = require('gulp-handlebars');
+
 
 var dist = 'dist/';
 var src = 'src/';
+var tmp = '.tmp/';
 
 /** NB trailing slashes on all paths */
 var config = {
   dist: dist,
   src: src,
+  tmp: {
+    root: tmp,
+    css:  tmp + 'css/',
+    js: tmp + 'js/'
+  },
   js: {
     dist: dist + 'js/',
     src: src + 'js/',
@@ -29,11 +40,14 @@ var config = {
     glob: '**/*.scss'
   },
   html: {
-    src: src + 'html/',
     glob: '**/*.html'
   },
+  hbs: {
+    src: src + 'hbs/',
+    glob: '**/*.hbs'
+  },
   extras: {
-    glob: [src + '*', '!*/bower_components', '!*/js', '!*/scss', '!*/html']
+    glob: [src + '*', '!*/bower_components', '!*/js', '!*/scss', '!*/hbs', '!*.html']
   },
   img: {
     dist: dist + 'img/',
@@ -44,7 +58,7 @@ var config = {
 
 
 gulp.task('clean', function(cb) {
-  require('del')([config.dist], cb);
+  require('del')([config.dist, config.tmp.root], cb);
 });
 
 
@@ -59,19 +73,36 @@ gulp.task('css', function() {
   return sass(config.css.src)
   .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
   .pipe(autoprefixer())
-  .pipe(gulp.dest(config.css.dist))
+  .pipe(gulp.dest(config.tmp.css))
   .pipe(reload({ stream: true }));
 });
 
 
 gulp.task('html', function() {
-  var assets = useref.assets({ searchPath: '{' +config.dist+ ',' + config.src + '}' });
+  var assets = useref.assets({ searchPath: '{' + config.tmp.root + ',' + config.src + '}' });
 
-  return gulp.src(config.html.src + config.html.glob)
+  return gulp.src(config.src + config.html.glob)
   .pipe(assets)
   .pipe(assets.restore())
   .pipe(useref())
   .pipe(gulp.dest(config.dist));
+});
+
+
+gulp.task('hbs', function() {
+  gulp.src(config.hbs.src + config.hbs.glob)
+    .pipe(handlebars({ handlebars: require('ember-handlebars') }))
+    .pipe(wrap('Ember.Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'Ember.TEMPLATES',
+      noRedeclare: true,
+      processName: function(filePath) {
+        // return declare.processNameByPath(filePath.replace(config.hbs.src, ''));
+        return declare.processNameByPath(filePath).split('.').slice(config.hbs.src.split('/').length-1).join('/');
+      }
+    }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest(config.tmp.js));
 });
 
 
@@ -104,7 +135,7 @@ gulp.task('watch', ['browser-sync'], function() {
 
 gulp.task('dist', function(cb) {
   require('run-sequence')('clean',
-                         ['js', 'css', 'extras', 'images'],
+                         ['hbs', 'js', 'css', 'extras', 'images'],
                          'html',
                          cb);
 });
