@@ -14,14 +14,20 @@ var wrap = require('gulp-wrap');
 var concat = require('gulp-concat');
 var declare = require('gulp-declare');
 var handlebars = require('gulp-handlebars');
+var gulpIf = require('gulp-if');
+var uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
+// var gzip = require('gulp-gzip');
 
 
+var env = process.env.NODE_ENV || 'development';
 var dist = 'dist/';
 var src = 'src/';
 var tmp = '.tmp/';
 
 /** NB trailing slashes on all paths */
 var config = {
+  compressing: env === 'production',
   dist: dist,
   src: src,
   tmp: {
@@ -40,7 +46,7 @@ var config = {
     glob: '**/*.scss'
   },
   html: {
-    glob: '**/*.html'
+    glob: '*.html'
   },
   hbs: {
     src: src + 'hbs/',
@@ -80,9 +86,21 @@ gulp.task('css', function() {
 
 gulp.task('html', function() {
   var assets = useref.assets({ searchPath: '{' + config.tmp.root + ',' + config.src + '}' });
+  var compressChannel = require('lazypipe')()
+  .pipe(function() {
+    return gulpIf(config.js.glob, uglify());
+  })
+  .pipe(function() {
+    return gulpIf(config.css.glob, minifyCss());
+  });
+  // FIXME gzipping how to serve
+  // .pipe(function() {
+  //   return gzip({ append: false });
+  // });
 
   return gulp.src(config.src + config.html.glob)
   .pipe(assets)
+  .pipe(gulpIf(config.compressing, compressChannel()))
   .pipe(assets.restore())
   .pipe(useref())
   .pipe(gulp.dest(config.dist));
@@ -97,7 +115,6 @@ gulp.task('hbs', function() {
       namespace: 'Ember.TEMPLATES',
       noRedeclare: true,
       processName: function(filePath) {
-        // return declare.processNameByPath(filePath.replace(config.hbs.src, ''));
         return declare.processNameByPath(filePath).split('.').slice(config.hbs.src.split('/').length-1).join('/');
       }
     }))
