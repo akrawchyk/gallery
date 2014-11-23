@@ -3,10 +3,10 @@
 
 ## To get started
 
-`npm install`
-`bower install`
-`gulp dist`
-`gulp watch`
+1. `npm install`
+2. `bower install`
+3. `gulp dist`
+4. `gulp watch`
 
 Enable compressing by passing `production` to the NODE_ENV environment variable.
 
