@@ -28,7 +28,7 @@
         title: 'Ferrari',
         slug: 'ferrari',
         paragraph: 'An expose of Ferrari\'s',
-        image: '',
+        image: '//lh6.googleusercontent.com/-c8CcCzSEH6w/UT4HMJE4j9I/AAAAAAABNj8/2puHpt9nL34/s250-no/prova_logo.jpg',
         blocks: [1, 2]
       },
       {
@@ -36,7 +36,7 @@
         title: 'Lambos',
         slug: 'lambos',
         paragraph: 'An expose of Lambo\'s',
-        image: '',
+        image: '//lh4.googleusercontent.com/-Kcv3WfzI-uU/Uk2OU8-yXgI/AAAAAAAAZ28/5X4DCD4JmOc/s380-no/Logo%2BGoogle%2BPlus.jpg',
         blocks: [3]
       },
       {
