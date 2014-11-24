@@ -1,9 +1,19 @@
+/* block
+ * block--editing
+ */
+
 .block {
     border-bottom: 2px solid $white;
     color: $white;
     height: 450px;
     position: relative;
     overflow: hidden;
+
+    &.block--editing {
+        .block__controls {
+            visibility: visible;
+        }
+    }
 }
 
 
@@ -31,4 +41,12 @@
 .block__paragraph {
     @include inuit-font-size(20px);
     font-family: $base-font-family;
+}
+
+
+.block__controls {
+    position: absolute;
+    visibility: hidden;
+    left: 0;
+    top: 0;
 }
