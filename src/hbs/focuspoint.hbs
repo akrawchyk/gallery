@@ -1,5 +1,3 @@
-<div class="focuspoint-helper">
-    <img class="focuspoint-helper__image" {{bind-attr src=view.image}}>
-    <div class="focuspoint-helper__reticle circle"></div>
-    <img class="focuspoint-helper__image focuspoint-helper__overlay" {{bind-attr src=view.image}}>
+<div class="block__image js-focuspoint" {{bind-attr data-focus-x=focusX}} {{bind-attr data-focus-y=focusY}}>
+    <img {{bind-attr src=image}}>
 </div>

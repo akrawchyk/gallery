@@ -1,9 +1,7 @@
 <section class="blocks" id="blocksapp">
     {{#each itemController="block"}}
         <div class="block flex" {{bind-attr class="isEditing:block--editing"}}>
-            <div class="block__image js-focuspoint" {{bind-attr data-focus-x=focusX}} {{bind-attr data-focus-y=focusY}}>
-                <img {{bind-attr src=image}}>
-            </div>
+            {{view App.FocuspointView image=image focusX=focusX focusY=focusY}}
             <div class="block__content center--xy text--bordered text--center">
                 <h2 class="block__title text--uppercase">{{title}}</h2>
                 <p class="block__paragraph">{{paragraph}}</p>
@@ -19,7 +17,7 @@
                 <li>
                     <label class="label">
                         <span>Edit focus point</span>
-                        {{view App.FocuspointView image=image}}
+                        {{view App.FocuspointhelperView image=image}}
                     </label>
                 </li>
             </div>

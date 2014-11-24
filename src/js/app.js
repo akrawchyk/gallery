@@ -28,8 +28,6 @@
 
   FastClick.attach(document.body);
 
-  jQuery('.js-focuspoint').focusPoint();
-
 
   WebFont.load({
     google: {

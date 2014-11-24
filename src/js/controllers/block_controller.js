@@ -11,9 +11,12 @@
         this.set('isEditing', true);
       },
 
+      doneEditing: function() {
+        this.set('isEditing', false);
+      },
+
       toggleEdit: function() {
         var editing = this.get('isEditing');
-
         this.set('isEditing', !editing);
       },
 
