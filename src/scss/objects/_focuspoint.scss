@@ -1,0 +1,31 @@
+.focuspoint-helper {
+    background: white;
+    overflow: hidden;
+    position: relative;
+    width: 260px;
+}
+
+
+.focuspoint-helper__image {
+    max-width: 100%;
+}
+
+
+.focuspoint-helper__reticle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    transform: translate(-50%, -50%);
+    border: 1px solid white;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+
+.focuspoint-helper__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

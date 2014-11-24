@@ -7,14 +7,21 @@
             <div class="block__content center--xy text--bordered text--center">
                 <h2 class="block__title text--uppercase">{{title}}</h2>
                 <p class="block__paragraph">{{paragraph}}</p>
-                <button class="block__toggle-edit" {{action "toggleEdit"}}>{{#if isEditing}}Save{{else}}Edit{{/if}}</button>
+                <button class="block__toggle-edit" {{action "toggleEdit"}}>{{#if isEditing}}Done{{else}}Edit{{/if}}</button>
             </div>
-            <div class="block__controls">
-                <label class="label">
-                    <span>Edit image</span>
-                    {{input type=text value=newImage placeholder="New image URL" action="updateImage" on="enter"}}
-                </label>
-                <button {{action "openModal" "modal" model}}>Edit focus point</button>
+            <ul class="block__controls">
+                <li>
+                    <label class="label">
+                        <span>Edit image</span>
+                        {{input type=text value=newImage placeholder="New image URL" action="updateImage" on="enter"}}
+                    </label>
+                </li>
+                <li>
+                    <label class="label">
+                        <span>Edit focus point</span>
+                        {{view App.FocuspointView image=image}}
+                    </label>
+                </li>
             </div>
         </div>
     {{/each}}

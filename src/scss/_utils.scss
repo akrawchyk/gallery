@@ -8,6 +8,11 @@
 }
 
 
+.circle {
+    border-radius: 50%;
+}
+
+
 .text--bordered {
     text-shadow: -1px 0 $base-text-color, 0 1px $base-text-color, 1px 0 $base-text-color, 0 -1px $base-text-color;
 }
@@ -21,3 +26,4 @@
 .text--uppercase {
     text-transform: uppercase;
 }
+
