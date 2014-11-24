@@ -16,10 +16,11 @@
     },
 
     click: function(e) {
+      // FIXME this is a code smell. A lot of dependency on a jQuery plugin I guess
       // https://github.com/jonom/jquery-focuspoint/blob/d2e25764018e14ef226380c0aab3ddf6f5f40352/js/jquery.focuspoint.helpertool.js
       var focusPointAttr = {};
       var $image = jQuery(e.target);
-      var $focusPointContainers = $image.closest('.js-focuspoint');
+      var $focusPointContainers = $image.closest('.block').find('.js-focuspoint');
       var imageW = $image.width();
       var imageH = $image.height();
 
@@ -41,8 +42,6 @@
       $focusPointContainers.data('focusX', focusPointAttr.focusX);
       $focusPointContainers.data('focusY', focusPointAttr.focusY);
       $focusPointContainers.focusPoint('adjustFocus');
-      console.log(focusPointAttr);
-      console.log('readjusted focuspoint');
 
 
       // calculate focus point percentages
