@@ -9,10 +9,9 @@
                 <p class="block__paragraph">{{paragraph}}</p>
             </div>
             <div class="block__controls">
-                <button {{action 'openFocusPointModal' 'modals/focuspoint' model}}>Edit focus point</button>
+                <button {{action "openModal" "modal" model}}>Edit focus point</button>
             </div>
         </div>
     {{/each}}
     {{#link-to 'blocks.new'}}new block{{/link-to}}
-    {{outlet modal}}
 </section>

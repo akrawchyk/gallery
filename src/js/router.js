@@ -16,6 +16,27 @@
   });
 
 
+  App.ApplicationRoute = Ember.Route.extend({
+    actions: {
+      openModal: function(modalName, model) {
+        console.log(modalName, model);
+        this.controllerFor(modalName).set('model', model);
+        return this.render(modalName, {
+          into: 'application',
+          outlet: 'modal'
+        });
+      },
+
+      closeModal: function() {
+        return this.disconnectOutlet({
+          outlet: 'modal',
+          parentView: 'application'
+        });
+      }
+    }
+  });
+
+
   App.PagesRoute = Ember.Route.extend({
     model: function () {
       return this.store.find('page');

@@ -5,9 +5,9 @@
 
 
   App.FocusPointView = Ember.View.extend({
+    templateName: 'focuspoint',
     click: function(evt) {
       console.log(evt);
-      // this.get('controller').send('isEditing', true);
       alert("FocusPointView was clicked!");
     }
   });
