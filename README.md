@@ -15,6 +15,7 @@ Enable compressing by passing `production` to the NODE_ENV environment variable.
 ## Conventions
 
 * CSS follows BEM naming
+* CSS follows Inuit CSS file structure and naming conventions
 * Each element is named according to its ember model attribute
 * HBS template naming matters. Build script replaces the names to be 'folder/file' to
 follow Ember conventions.

@@ -3,6 +3,7 @@
     color: $white;
     height: 450px;
     position: relative;
+    overflow: hidden;
 }
 
 
@@ -12,15 +13,11 @@
 
 
 .block__image {
-    background: {
-        size: cover;
-        position: 50% 50%;
-    }
     position: absolute;
-    top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    bottom: 0;
+    top: 0;
     z-index: -1;
 }
 

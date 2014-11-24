@@ -8,7 +8,7 @@
     this.resource('pages', { path: '/pages' }, function() {
       this.route('new');
     });
-    this.resource('page', { path: '/page/:page_slug' }, function() {
+    this.resource('page', { path: '/pages/:page_slug' }, function() {
       this.resource('blocks', function() {
         this.route('new');
       });

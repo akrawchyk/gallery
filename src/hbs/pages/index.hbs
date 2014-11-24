@@ -1,8 +1,8 @@
-<ul class="list list--pages" id="pages">
+<ul class="list list-bare" id="pages">
     {{#each itemController="page"}}
-        <li class="list__item">
+    <li class="page list__item" {{bind-attr style=imageStyle}}>
             {{#link-to 'blocks' this}}
-                {{title}} - {{slug}} - {{paragraph}} - <img {{bind-attr src=image}} alt="page image">
+            <img {{bind-attr src=image}} {{bind-attr alt="{{title}}"}}>
             {{/link-to}}
         </li>
     {{/each}}
