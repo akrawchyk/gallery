@@ -1,20 +1,39 @@
-<label>
-    <span>New title</span>
-    {{input
-    type="text"
-    value="newTitle"
-    placeholder="Give your block a title"}}
-</label>
-<label>
-    <span>New paragraph</span>
-    {{input
-    type="text"
-    value="newParagraph"
-    placeholder="Give your block a paragraph (optional)"}}
-</label>
-    <span>New image</span>
-    {{input
-    type="text"
-    value="newiImage"
-    placeholder="Give your block an image (optional)"}}
-</label>
+<h1>Create block</h1>
+
+<ul class="blocks__controls">
+    <li>
+        <label>
+            <span>Title</span>
+            {{input
+            type="text"
+            placeholder="Title your block"
+            value=newTitle}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Paragraph</span>
+            {{input
+            type="text"
+            placeholder="Give your block a paragraph (optional)"
+            value=newParagraph}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Image</span>
+            {{input
+            type="text"
+            placeholder="Give your block an image (optional)"
+            value=newImage}}
+        </label>
+    </li>
+    <li>
+        <button {{action "createblock"}}>Create block</button>
+        <!-- TODO make block adding work -->
+    </li>
+</ul>
+
+<div>
+    {{#link-to 'blocks'}}back to blocks{{/link-to}}
+</div>

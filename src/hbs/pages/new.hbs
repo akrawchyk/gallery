@@ -1,4 +1,4 @@
-Create a new page
+<h1>Create a new page</h1>
 
 <ul class="pages__controls">
     <li>
@@ -15,7 +15,7 @@ Create a new page
             <span>Slug</span>
             {{input
             type="text"
-            placeholder="Give your page a slug"
+            placeholder="Give your page a slug (optional)"
             value=newSlug}}
         </label>
     </li>
@@ -24,7 +24,7 @@ Create a new page
             <span>Paragraph</span>
             {{input
             type="text"
-            placeholder="Give your page a paragraph"
+            placeholder="Give your page a paragraph (optional)"
             value=newParagraph}}
         </label>
     </li>
@@ -33,15 +33,14 @@ Create a new page
             <span>Image</span>
             {{input
             type="text"
-            placeholder="Give your page an image"
+            placeholder="Give your page an image (optional)"
             value=newImage}}
         </label>
     </li>
+    <li>
+        <button {{action "createPage"}}>Create page</button>
+    </li>
 </ul>
-
-<div>
-    <button {{action "createPage"}}>Create</button>
-</div>
 
 <div>
     {{#link-to 'pages'}}back to pages{{/link-to}}

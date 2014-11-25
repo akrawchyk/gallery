@@ -39,20 +39,24 @@
   App.PagesRoute = Ember.Route.extend({
     model: function () {
       return this.store.find('page');
-    },
-    afterModel: function(pages, transition) {
-      if (pages.get('length') === 1) {
-        var firstPage = pages.get('firstObject');
-        console.log(firstPage);
-        this.transitionTo('blocks', firstPage);
-      }
     }
+    // afterModel: function(pages/*, transition*/) {
+    //   if (pages.get('length') === 0) {
+    //     this.transitionTo('page.new');
+    //   }
+    //
+    //   if (pages.get('length') === 1) {
+    //     var firstPage = pages.get('firstObject');
+    //     console.log(firstPage);
+    //     this.transitionTo('blocks', firstPage);
+    //   }
+    // }
   });
 
 
   App.PageRoute = Ember.Route.extend({
     model: function(params) {
-      return jQuery.getJSON('/page/' + params.page_slug);
+      return jQuery.getJSON('/pages/' + params.page_slug);
     },
     serialize: function(model) {
       return { page_slug: model.get('slug') };
@@ -63,6 +67,17 @@
   App.BlocksRoute = Ember.Route.extend({
     model: function () {
       return this.modelFor('page').get('blocks');
+    },
+    beforeModel: function() {
+      var blocks = this.modelFor('page').get('blocks');
+      var block = blocks.get('firstObject');
+
+      if (!block) {
+        this.transitionTo('blocks.new');
+        return;
+      }
+
+      this.transitionTo('blocks.index');
     }
   });
 

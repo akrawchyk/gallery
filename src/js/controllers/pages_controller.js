@@ -37,12 +37,12 @@
         var self = this;
 
         function onSuccess(page) {
-          console.log(page);
-          self.set('newTitle', '');
-          self.set('newSlug', '');
-          self.set('newParagraph', '');
-          self.set('newImage', '');
-          self.transitionTo('blocks', page, page.get('blocks'));
+          console.log('success', page);
+          // self.set('newTitle', '');
+          // self.set('newSlug', '');
+          // self.set('newParagraph', '');
+          // self.set('newImage', '');
+          // self.transitionTo('blocks', page, page.get('blocks'));
         }
 
         function onFail(reason) {
