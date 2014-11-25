@@ -1,44 +1,43 @@
 Create a new page
 
-<div>
-    <label>
-        <span>Title</span>
-        {{input
-        type="text"
-        placeholder="Title your page"
-        value=newTitle}}
-    <label>
-</div>
-
-<div>
-    <label>
-        <span>Slug</span>
-        {{input
-        type="text"
-        placeholder="Give your page a slug"
-        value=newSlug}}
-    </label>
-</div>
-
-<div>
-    <label>
-        <span>Paragraph</span>
-        {{input
-        type="text"
-        placeholder="Give your page a paragraph"
-        value=newParagraph}}
-    </label>
-</div>
-
-<div>
-    <label>
-        <span>Image</span>
-        {{input
-        type="text"
-        placeholder="Give your page an image"
-        value=newImage}}
-    </label>
-</div>
+<ul class="pages__controls">
+    <li>
+        <label>
+            <span>Title</span>
+            {{input
+            type="text"
+            placeholder="Title your page"
+            value=newTitle}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Slug</span>
+            {{input
+            type="text"
+            placeholder="Give your page a slug"
+            value=newSlug}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Paragraph</span>
+            {{input
+            type="text"
+            placeholder="Give your page a paragraph"
+            value=newParagraph}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Image</span>
+            {{input
+            type="text"
+            placeholder="Give your page an image"
+            value=newImage}}
+        </label>
+    </li>
+</ul>
 
 <div>
     <button {{action "createPage"}}>Create</button>
@@ -46,4 +45,4 @@ Create a new page
 
 <div>
     {{#link-to 'pages'}}back to pages{{/link-to}}
-</div>
+</ul>

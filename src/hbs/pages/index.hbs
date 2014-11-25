@@ -2,7 +2,11 @@
     {{#each itemController="page"}}
     <li class="page list__item" {{bind-attr style=imageStyle}}>
             {{#link-to 'blocks' this}}
+            {{#if image}}
             <img {{bind-attr src=image}} {{bind-attr alt="{{title}}"}}>
+            {{else}}
+            {{title}}
+            {{/if}}
             {{/link-to}}
         </li>
     {{/each}}

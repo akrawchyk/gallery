@@ -9,17 +9,19 @@
     actions: {
       createBlock: function() {
         var title = this.get('newTitle');
-        // var paragraph = this.get('newParagraph');
-        // var image = this.get('newImage');
+        var paragraph = this.get('newParagraph');
+        var image = this.get('newImage');
 
-        if (!title) {
+        if (Ember.isEmpty(title)) {
           return false;
+        } else {
+          title = title.trim();
         }
 
         var block = this.store.createRecord('block', {
-          title: title
-          // paragraph: paragraph,
-          // image: image
+          title: title,
+          paragraph: paragraph,
+          image: image
         });
 
         this.set('newTitle', '');

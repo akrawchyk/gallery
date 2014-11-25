@@ -10,6 +10,7 @@ var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
+var svgmin = require('gulp-svgmin');
 var wrap = require('gulp-wrap');
 var concat = require('gulp-concat');
 var declare = require('gulp-declare');
@@ -135,7 +136,8 @@ gulp.task('extras', function() {
 
 gulp.task('images', function() {
   return gulp.src(config.img.src + config.img.blob)
-  .pipe(imagemin())
+  .pipe(gulpIf('!*.svg', imagemin()))
+  .pipe(gulpIf('*.svg', svgmin()))
   .pipe(gulp.dest(config.img.dist));
 });
 

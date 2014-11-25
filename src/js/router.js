@@ -39,6 +39,13 @@
   App.PagesRoute = Ember.Route.extend({
     model: function () {
       return this.store.find('page');
+    },
+    afterModel: function(pages, transition) {
+      if (pages.get('length') === 1) {
+        var firstPage = pages.get('firstObject');
+        console.log(firstPage);
+        this.transitionTo('blocks', firstPage);
+      }
     }
   });
 
