@@ -18,7 +18,9 @@ var handlebars = require('gulp-handlebars');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
-// var gzip = require('gulp-gzip');
+var htmlmin = require('gulp-htmlmin');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
 
 
 var env = process.env.NODE_ENV || 'development';
@@ -42,6 +44,8 @@ var config = {
     glob: '**/*.js'
   },
   css: {
+    // FIXME this conflicts with dist and src globs, scss vs css. use scss task
+    // and folder instead?
     dist: dist + 'css/',
     src: src + 'scss/',
     glob: '**/*.scss'
@@ -91,21 +95,9 @@ gulp.task('css', function() {
 
 gulp.task('html', function() {
   var assets = useref.assets({ searchPath: '{' + config.tmp.root + ',' + config.src + '}' });
-  var compressChannel = require('lazypipe')()
-  .pipe(function() {
-    return gulpIf(config.js.glob, uglify());
-  })
-  .pipe(function() {
-    return gulpIf(config.css.glob, minifyCss());
-  });
-  // FIXME gzipping how to serve
-  // .pipe(function() {
-  //   return gzip({ append: false });
-  // });
 
   return gulp.src(config.src + config.html.glob)
   .pipe(assets)
-  .pipe(gulpIf(config.compressing, compressChannel()))
   .pipe(assets.restore())
   .pipe(useref())
   .pipe(gulp.dest(config.dist));
@@ -157,10 +149,38 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 
+gulp.task('rev', function() {
+  var compressChannel = require('lazypipe')()
+  .pipe(function() {
+    return gulpIf(config.js.glob, uglify());
+  })
+  // FIXME these two globs break conventions
+  .pipe(function() {
+    return gulpIf('**/*.css', minifyCss());
+  })
+  .pipe(function() {
+    return gulpIf('**/*.html', htmlmin({
+      collapseWhitespace: true,
+      removeComments: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true
+    }));
+  });
+
+  return gulp.src(config.dist + '/**/*')
+  .pipe(gulpIf('!**/*.{html,txt,json}', rev()))
+  .pipe(revReplace())
+  .pipe(gulpIf(config.compressing, compressChannel()))
+  .pipe(gulp.dest(config.dist));
+});
+
+
 gulp.task('dist', function(cb) {
   require('run-sequence')('clean',
                          ['hbs', 'js', 'css', 'extras', 'images'],
                          'html',
+                         'rev',
                          cb);
 });
 gulp.task('default', ['dist']);
