@@ -1,11 +1,14 @@
 <section id="pagesapp">
     <header class="hero" id="hero">
         <h1 class="hero__title">Pages</h1>
-
-        {{#link-to 'pages.new'}}new page{{/link-to}}
     </header>
 
     <section id="main">
+        <ul class="pages__controls">
+            <li>
+                {{#link-to 'pages.new'}}new page{{/link-to}}
+            </li>
+        </ul>
         {{outlet}}
     </section>
 

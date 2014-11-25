@@ -1,49 +1,47 @@
-Create a new page
+<h1>Create a new page</h1>
 
-<div>
-    <label>
-        <span>Title</span>
-        {{input
-        type="text"
-        placeholder="Title your page"
-        value=newTitle}}
-    <label>
-</div>
-
-<div>
-    <label>
-        <span>Slug</span>
-        {{input
-        type="text"
-        placeholder="Give your page a slug"
-        value=newSlug}}
-    </label>
-</div>
-
-<div>
-    <label>
-        <span>Paragraph</span>
-        {{input
-        type="text"
-        placeholder="Give your page a paragraph"
-        value=newParagraph}}
-    </label>
-</div>
-
-<div>
-    <label>
-        <span>Image</span>
-        {{input
-        type="text"
-        placeholder="Give your page an image"
-        value=newImage}}
-    </label>
-</div>
-
-<div>
-    <button {{action "createPage"}}>Create</button>
-</div>
+<ul class="pages__controls">
+    <li>
+        <label>
+            <span>Title</span>
+            {{input
+            type="text"
+            placeholder="Title your page"
+            value=newTitle}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Slug</span>
+            {{input
+            type="text"
+            placeholder="Give your page a slug (optional)"
+            value=newSlug}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Paragraph</span>
+            {{input
+            type="text"
+            placeholder="Give your page a paragraph (optional)"
+            value=newParagraph}}
+        </label>
+    </li>
+    <li>
+        <label>
+            <span>Image</span>
+            {{input
+            type="text"
+            placeholder="Give your page an image (optional)"
+            value=newImage}}
+        </label>
+    </li>
+    <li>
+        <button {{action "createPage"}}>Create page</button>
+    </li>
+</ul>
 
 <div>
     {{#link-to 'pages'}}back to pages{{/link-to}}
-</div>
+</ul>

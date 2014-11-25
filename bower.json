@@ -21,7 +21,6 @@
     "modernizr": "~2.8.3",
     "jquery": "~2.1.1",
     "fastclick": "~1.0.3",
-    "stringjs": "~2.2.0",
     "webfontloader": "~1.5.8",
     "inuit-starter-kit": "~0.2.8",
     "inuit-clearfix": "~0.2.1",

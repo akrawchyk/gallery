@@ -1,4 +1,4 @@
-/* globals Ember, App, S */
+/* globals Ember, App */
 
 
 (function() {
@@ -9,34 +9,40 @@
     actions: {
       createPage: function() {
         var title = this.get('newTitle');
-        var slug = 'asdf';
-        // var slug = this.get('newSlug');
-        // var paragraph = this.get('newParagraph');
-        // var image = this.get('newImage');
+        var slug = this.get('newSlug');
+        var paragraph = this.get('newParagraph');
+        var image = this.get('newImage');
 
-        if (!title) {
+        console.log(title, slug, paragraph, image);
+
+        if (Ember.isEmpty(title)) {
           return false;
+        } else {
+          title = title.trim();
         }
 
         if (title && !slug) {
-          slug = S(slug).dasherize().s;
+          slug = title.trim().dasherize();
         }
+
+        // TODO consider adding bg color option
 
         var page = this.store.createRecord('page', {
           title: title,
-          slug: slug
-          // paragraph: paragraph,
-          // image: image
+          slug: slug,
+          paragraph: paragraph,
+          image: image
         });
 
         var self = this;
 
         function onSuccess(page) {
-          self.set('newTitle', '');
-          self.set('newSlug', '');
-          self.set('newParagraph', '');
-          self.set('newImage', '');
-          self.transitionToRoute('page', page.slug);
+          console.log('success', page);
+          // self.set('newTitle', '');
+          // self.set('newSlug', '');
+          // self.set('newParagraph', '');
+          // self.set('newImage', '');
+          // self.transitionTo('blocks', page, page.get('blocks'));
         }
 
         function onFail(reason) {
