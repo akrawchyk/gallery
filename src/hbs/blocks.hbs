@@ -1,3 +1,26 @@
 <section class="blocks" id="blocksapp">
-    {{outlet}}
+    {{#each itemController="block"}}
+        <div class="block flex" {{bind-attr class="isEditing:block--editing"}}>
+            {{focuspoint image=image focusX=focusX focusY=focusY}}
+            <div class="block__content center--xy text--bordered text--center">
+                <h2 class="block__title text--uppercase">{{title}}</h2>
+                <p class="block__paragraph">{{paragraph}}</p>
+                <button class="block__toggle-edit" {{action "toggleEdit"}}>{{#if isEditing}}Done{{else}}Edit{{/if}}</button>
+            </div>
+            <ul class="block__controls">
+                <li>
+                    <label class="label">
+                        <span>Edit image</span>
+                        {{input type=text value=newImage placeholder="New image URL" action="updateImage" on="enter"}}
+                    </label>
+                </li>
+                <li>
+                    <label class="label">
+                        <span>Edit focus point</span>
+                        {{focuspoint-helper image=image}}
+                    </label>
+                </li>
+            </ul>
+        </div>
+    {{/each}}
 </section>

@@ -8,10 +8,10 @@
     this.resource('pages', { path: '/pages' }, function() {
       this.route('new');
     });
-    this.resource('page', { path: ':page_slug' }, function() {
+    this.resource('page', { path: ':page_id' }, function() {
       this.route('edit');
-      this.resource('blocks', { path: ':block_id' }, function() {
-        this.route('new');
+      this.resource('blocks', { path: '/blocks' }, function() {
+        this.route('edit');
       });
     });
   });
@@ -45,18 +45,10 @@
 
 
   App.PageRoute = Ember.Route.extend({
-    model: function(params) {
-      console.log(params);
-      // return this.store.find('page', params.page_id);
-      return jQuery.getJSON('/pages/' + params.page_id);
-    },
-    serialize: function(model) {
-      return { page_slug: model.get('slug') };
+    afterModel: function() {
+      console.log('afterModel');
+      this.transitionTo('blocks.index');
     }
-    // afterModel: function() {
-    //   console.log(this.model().name);
-    //   // this.transitionTo('blocks', this.model().name);
-    // }
   });
 
 
@@ -64,17 +56,6 @@
     model: function () {
       return this.modelFor('page').get('blocks');
     }
-    // beforeModel: function() {
-    //   var blocks = this.modelFor('page').get('blocks');
-    //   var block = blocks.get('firstObject');
-    //
-    //   if (!block) {
-    //     this.transitionTo('blocks.new');
-    //     return;
-    //   }
-    //
-    //   this.transitionTo('blocks.index');
-    // }
   });
 
 })();
