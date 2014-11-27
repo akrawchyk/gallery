@@ -5,19 +5,16 @@
 
 
   App.FocuspointView = Ember.View.extend({
+    classNames: ['block__image'],
     templateName: 'focuspoint',
+    attributeBindings: ['data-focus-x', 'data-focus-y', 'data-image-w', 'data-image-h'],
 
     didInsertElement: function() {
       Ember.run.scheduleOnce('afterRender', this, 'processChildElements');
     },
 
     processChildElements: function() {
-      // FIXME add correct image width and heights
-      // var imageH = this.$().closest('.block').height();
-      // var imageW = this.$().closest('.block').width();
-      // this.$().find('.js-focuspoint').attr('data-image-w', imageW).attr('data-image-h', imageH);
-      // must not use the element due to binding data attrs
-      this.$().find('.js-focuspoint').focusPoint({
+      this.$().focusPoint({
         throttleDuration: 100
       });
     }

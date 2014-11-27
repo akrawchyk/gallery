@@ -142,7 +142,7 @@ gulp.task('browser-sync', function() {
 
 
 gulp.task('watch', ['browser-sync'], function() {
-  gulp.watch(config.hbs.src + config.hbs.glob, ['html', reload]);
+  gulp.watch(config.hbs.src + config.hbs.glob, ['hbs', 'html', reload]);
   gulp.watch(config.js.src + config.js.glob, ['html', reload]);
   gulp.watch(config.css.src + config.css.glob, ['css']);
   gulp.watch(config.html.src + config.html.glob, ['html', reload]);
