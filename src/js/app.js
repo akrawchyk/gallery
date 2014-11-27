@@ -1,4 +1,4 @@
-/* globals Ember, DS, jQuery, FastClick, WebFont */
+/* globals Ember, DS, Em, FastClick, WebFont */
 
 (function() {
   'use strict';

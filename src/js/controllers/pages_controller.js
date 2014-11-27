@@ -13,8 +13,6 @@
         var paragraph = this.get('newParagraph');
         var image = this.get('newImage');
 
-        console.log(title, slug, paragraph, image);
-
         if (Ember.isEmpty(title)) {
           return false;
         } else {
@@ -34,10 +32,9 @@
           image: image
         });
 
-        var self = this;
+        // var self = this;
 
         function onSuccess(page) {
-          console.log('success', page);
           // self.set('newTitle', '');
           // self.set('newSlug', '');
           // self.set('newParagraph', '');

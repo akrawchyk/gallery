@@ -30,23 +30,23 @@
         paragraph: 'An expose of Ferrari\'s',
         image: '//lh6.googleusercontent.com/-c8CcCzSEH6w/UT4HMJE4j9I/AAAAAAABNj8/2puHpt9nL34/s250-no/prova_logo.jpg',
         blocks: [1, 2]
+      },
+      {
+        id: 2,
+        title: 'Lambos',
+        slug: 'lambos',
+        paragraph: 'An expose of Lambo\'s',
+        image: '//lh4.googleusercontent.com/-Kcv3WfzI-uU/Uk2OU8-yXgI/AAAAAAAAZ28/5X4DCD4JmOc/s380-no/Logo%2BGoogle%2BPlus.jpg',
+        blocks: [3]
+      },
+      {
+        id: 3,
+        title: 'Paganis',
+        slug: 'paganis',
+        paragraph: 'An expose of Zonda\'s',
+        image: '//1.bp.blogspot.com/-PlCC786di88/UNnfBTjvuII/AAAAAAAAG3k/tM-_53B3rgE/s400/Pagani+Logo+5.jpg',
+        blocks: []
       }
-      // ,
-      // {
-      //   id: 2,
-      //   title: 'Lambos',
-      //   slug: 'lambos',
-      //   paragraph: 'An expose of Lambo\'s',
-      //   image: '//lh4.googleusercontent.com/-Kcv3WfzI-uU/Uk2OU8-yXgI/AAAAAAAAZ28/5X4DCD4JmOc/s380-no/Logo%2BGoogle%2BPlus.jpg',
-      //   blocks: [3]
-      // },
-      // {
-      //   id: 3,
-      //   title: 'Profit!',
-      //   slug: 'profit',
-      //   paragraph: 'sdfghh',
-      //   image: ''
-      // }
     ]
   });
 

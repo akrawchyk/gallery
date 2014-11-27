@@ -1,11 +1,11 @@
 <ul class="list list-bare" id="pages">
     {{#each itemController="page"}}
     <li class="page list__item" {{bind-attr style=imageStyle}}>
-            {{#link-to 'blocks' this}}
+            {{#link-to 'page' this}}
             {{#if image}}
-            <img {{bind-attr src=image}} {{bind-attr alt="{{title}}"}}>
+                <img {{bind-attr src=image}} {{bind-attr alt="{{title}}"}}>
             {{else}}
-            {{title}}
+                {{title}}
             {{/if}}
             {{/link-to}}
         </li>

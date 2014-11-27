@@ -1,5 +1,4 @@
-/* globals Ember, App, S */
-
+/* globals Ember, App */
 
 (function() {
   'use strict';
