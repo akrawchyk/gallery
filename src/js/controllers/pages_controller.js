@@ -34,7 +34,7 @@
           image: image
         });
 
-        var self = this;
+        // var self = this;
 
         function onSuccess(page) {
           console.log('success', page);

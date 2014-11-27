@@ -8,8 +8,9 @@
     this.resource('pages', { path: '/pages' }, function() {
       this.route('new');
     });
-    this.resource('page', { path: '/pages/:page_slug' }, function() {
-      this.resource('blocks', function() {
+    this.resource('page', { path: ':page_slug' }, function() {
+      this.route('edit');
+      this.resource('blocks', { path: ':block_id' }, function() {
         this.route('new');
       });
     });
@@ -40,45 +41,40 @@
     model: function () {
       return this.store.find('page');
     }
-    // afterModel: function(pages/*, transition*/) {
-    //   if (pages.get('length') === 0) {
-    //     this.transitionTo('page.new');
-    //   }
-    //
-    //   if (pages.get('length') === 1) {
-    //     var firstPage = pages.get('firstObject');
-    //     console.log(firstPage);
-    //     this.transitionTo('blocks', firstPage);
-    //   }
-    // }
   });
 
 
   App.PageRoute = Ember.Route.extend({
     model: function(params) {
-      return jQuery.getJSON('/pages/' + params.page_slug);
+      console.log(params);
+      // return this.store.find('page', params.page_id);
+      return jQuery.getJSON('/pages/' + params.page_id);
     },
     serialize: function(model) {
       return { page_slug: model.get('slug') };
     }
+    // afterModel: function() {
+    //   console.log(this.model().name);
+    //   // this.transitionTo('blocks', this.model().name);
+    // }
   });
 
 
   App.BlocksRoute = Ember.Route.extend({
     model: function () {
       return this.modelFor('page').get('blocks');
-    },
-    beforeModel: function() {
-      var blocks = this.modelFor('page').get('blocks');
-      var block = blocks.get('firstObject');
-
-      if (!block) {
-        this.transitionTo('blocks.new');
-        return;
-      }
-
-      this.transitionTo('blocks.index');
     }
+    // beforeModel: function() {
+    //   var blocks = this.modelFor('page').get('blocks');
+    //   var block = blocks.get('firstObject');
+    //
+    //   if (!block) {
+    //     this.transitionTo('blocks.new');
+    //     return;
+    //   }
+    //
+    //   this.transitionTo('blocks.index');
+    // }
   });
 
 })();

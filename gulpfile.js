@@ -93,7 +93,7 @@ gulp.task('css', function() {
 });
 
 
-gulp.task('html', function() {
+gulp.task('html', ['hbs'], function() {
   var assets = useref.assets({ searchPath: '{' + config.tmp.root + ',' + config.src + '}' });
 
   return gulp.src(config.src + config.html.glob)
@@ -142,8 +142,8 @@ gulp.task('browser-sync', function() {
 
 
 gulp.task('watch', ['browser-sync'], function() {
-  gulp.watch(config.hbs.src + config.hbs.glob, ['hbs', 'html', reload]);
-  gulp.watch(config.js.src + config.js.glob, ['js', 'html', reload]);
+  gulp.watch(config.hbs.src + config.hbs.glob, ['html', reload]);
+  gulp.watch(config.js.src + config.js.glob, ['html', reload]);
   gulp.watch(config.css.src + config.css.glob, ['css']);
   gulp.watch(config.html.src + config.html.glob, ['html', reload]);
 });

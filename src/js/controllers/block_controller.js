@@ -20,15 +20,14 @@
         this.set('isEditing', !editing);
       },
 
-      updateFocusPoint: function(newFocusPoint) {
+      updateFocusPoint: function(newFocusPointAttrs) {
         // TODO better type checking on this object
-        console.log('controller ' + newFocusPoint);
-        if (Ember.isEmpty(newFocusPoint.focusX || Ember.isEmpty(newFocusPoint.focusY))) {
+        if (Ember.isEmpty(newFocusPointAttrs.focusX || Ember.isEmpty(newFocusPointAttrs.focusY))) {
           return;
         }
 
         var block = this.get('model');
-        block.setProperties(newFocusPoint);
+        block.setProperties(newFocusPointAttrs);
         block.save();
       },
 

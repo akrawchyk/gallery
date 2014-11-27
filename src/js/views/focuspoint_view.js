@@ -20,8 +20,9 @@
       this.$().find('.js-focuspoint').focusPoint({
         throttleDuration: 100
       });
-      console.log('did focuspoint');
     }
   });
+
+  Ember.Handlebars.helper('focuspoint', App.FocuspointView);
 
 })();
