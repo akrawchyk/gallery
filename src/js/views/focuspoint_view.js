@@ -5,7 +5,7 @@
 
 
   App.FocuspointView = Ember.View.extend({
-    classNames: ['block__image'],
+    classNames: ['focuspoint block__image'],
     templateName: 'focuspoint',
     attributeBindings: ['data-focus-x', 'data-focus-y', 'data-image-w', 'data-image-h'],
 

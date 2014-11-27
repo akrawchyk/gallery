@@ -41,7 +41,6 @@
         var block = this.get('model');
         block.set('image', newImage);
         block.save();
-        console.log('updated image with ' + newImage);
       }
     },
 

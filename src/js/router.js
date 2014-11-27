@@ -46,7 +46,6 @@
 
   App.PageRoute = Ember.Route.extend({
     afterModel: function() {
-      console.log('afterModel');
       this.transitionTo('blocks.index');
     }
   });
