@@ -489,17 +489,17 @@ button, input, optgroup, select, textarea,
 .label {
   color: #333; }
 
-.focuspoint-helper {
+.focuspointhelper {
   background: white;
   overflow: hidden;
   position: relative;
   width: 260px; }
 
-.focuspoint-helper__image {
+.focuspointhelper__image {
   display: block;
   max-width: 100%; }
 
-.focuspoint-helper__reticle {
+.focuspointhelper__reticle {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -510,9 +510,10 @@ button, input, optgroup, select, textarea,
           transform: translate(-50%, -50%);
   border: 1px solid white;
   border-radius: 50%;
-  z-index: 10; }
+  z-index: 10;
+  box-shadow: 0 0 5px black; }
 
-.focuspoint-helper__overlay {
+.focuspointhelper__overlay {
   position: absolute;
   top: 0;
   left: 0; }
